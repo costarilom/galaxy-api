@@ -1,6 +1,6 @@
-insert into planet values('FERENGI', '0', '500');
-insert into planet values('BETASOIDE', '0', '2000');
-insert into planet values('VULCANO', '0', '1000');
+insert into planet values('FER', 'FERENGI', '500', '0', 1, 'RIG');
+insert into planet values('BET', 'BETASOIDE', '2000', '0', 3, 'RIG');
+insert into planet values('VUL', 'VULCANO', '1000', '0', 5, 'LEF');
 
 
 

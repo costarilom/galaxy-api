@@ -7,11 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.meli.galaxy.entity.Coordinate;
+import com.meli.galaxy.entity.Planet;
 
 @Repository
-public interface CoordinateRepository extends JpaRepository<Coordinate, Integer> {
+public interface PlanetRepository extends JpaRepository<Planet, Integer>{
+
+	@Query("SELECT p FROM planet p WHERE code = :code")
+	Planet findPlanetByCode(@Param("code") String code);
 	
-	@Query("SELECT c FROM Coordinate WHERE c.planet.id = :planetId ORDER BY c.id DESC")
-	List<Coordinate> findCoordinateByPlanetId(@Param("planetId") Integer planetId);
+	@Query("SELECT p FROM planet p")
+	List<Planet> findAllPlanet();
 }

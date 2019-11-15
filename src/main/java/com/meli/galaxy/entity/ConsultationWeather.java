@@ -19,14 +19,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-//Tabla donde dejo alojada la coordenada de cada planeta por dia
+//Tabla donde alojo las consultas de clima realizadas
 
-
-@Table(name = "coordinate")
+@Table(name = "consultation_weather")
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @EntityListeners(AuditingEntityListener.class)
-public class Coordinate implements Serializable {
+public class ConsultationWeather implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,17 +39,9 @@ public class Coordinate implements Serializable {
 	@Column(name="year", columnDefinition = "int not null")
 	private Integer year;
 	
-	//Eje Y
-	@Column(name="latitude", columnDefinition = "varchar(255) not null")
-	private String latitude;
-	
-	//Eje X
-	@Column(name="longitude", columnDefinition = "varchar(255) not null")
-	private String longitude;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "planet_id", columnDefinition = "int not null")
-	private Planet planet;
+	@JoinColumn(name = "weather_id", columnDefinition = "int not null")
+	private Weather weather;
 
 	public Integer getId() {
 		return id;
@@ -76,30 +67,13 @@ public class Coordinate implements Serializable {
 		this.year = year;
 	}
 
-	public String getLatitude() {
-		return latitude;
+	public Weather getWeather() {
+		return weather;
 	}
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	public void setWeather(Weather weather) {
+		this.weather = weather;
 	}
 
-	public String getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-
-	public Planet getPlanet() {
-		return planet;
-	}
-
-	public void setPlanet(Planet planet) {
-		this.planet = planet;
-	}
-
-	
-	
+		
 }

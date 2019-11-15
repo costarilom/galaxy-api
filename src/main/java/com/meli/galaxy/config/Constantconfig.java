@@ -4,20 +4,13 @@ public interface Constantconfig {
 	
 	public static final String SYSTEM_TIMEZONE = "America/Argentina/Buenos_Aires";
 
-	public static final int YEAR_MAX = 10;
+	public static final int YEAR_MAX = 1;
 	
-	/*Coordenas iniciales para mis planetas*/
+	/*Coordenas iniciales para el sol*/
 	public static final String SOL_X = "0";
 	public static final String SOL_Y = "0";
-	
-	public static final String FERENGI_X = "0";
-	public static final String FERENGI_Y = "500";
-	
-	public static final String BETASOIDE_X = "0";
-	public static final String BETASOIDE_Y = "2000";
-	
-	public static final String VULCANO_X = "0";
-	public static final String VULCANO_Y = "1000";
-	
-	
+
+	/*Code para la direccion de rotacion*/
+	public static final String RIGHT = "RIG";
+	public static final String LEFT = "LEF";
 }

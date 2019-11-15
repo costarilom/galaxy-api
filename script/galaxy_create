@@ -13,9 +13,12 @@ GO
 
 CREATE TABLE [dbo].[planet](
 	[id] [int] IDENTITY(1,1) NOT NULL,
+	[code] [varchar](3) NOT NULL,
 	[name] [varchar](255) NOT NULL,
 	[initial_latitude] [varchar](255) NOT NULL,
 	[initial_longitude] [varchar](255) NOT NULL,
+	[displacement] [int] NOT NULL,
+	[direction_of_rotation] [varchar](3) NOT NULL
 PRIMARY KEY CLUSTERED
 (
 	[id] ASC
@@ -36,10 +39,10 @@ GO
 CREATE TABLE [dbo].[coordinate](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[date] [datetime] NOT NULL,
-	[year] [int] NULL,
+	[year] [int] NOT NULL,
 	[latitude] [varchar](255) NOT NULL,
 	[longitude] [varchar](255) NOT NULL,
-	[planet_id] [int] NULL,
+	[planet_id] [int] NOT NULL,
 PRIMARY KEY CLUSTERED
 (
 	[id] ASC
@@ -54,8 +57,8 @@ GO
 CREATE TABLE [dbo].[consultation_weather](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[date] [datetime] NOT NULL,
-	[year] [int] NULL,
-	[weather_id] [int] NULL,
+	[year] [int] NOT NULL,
+	[weather_id] [int] NOT NULL,
 PRIMARY KEY CLUSTERED
 (
 	[id] ASC
