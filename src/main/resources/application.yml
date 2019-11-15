@@ -1,0 +1,28 @@
+spring:
+  datasource: 
+    url: jdbc:sqlserver://192.168.0.24:1433;databaseName=galaxy
+    username: sa
+    password: admin1234
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  jpa:
+    show-sql: true
+    hibernate:
+      #ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        #ddl-auto: update
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+server:
+  max-http-header-size: 65236
+  
+#cron.expression.coordinates.all: 0 0 2 * * ?
+cron.expression.coordinates.all: 0/5 * * * * ?

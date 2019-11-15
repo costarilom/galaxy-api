@@ -1,0 +1,10 @@
+insert into planet values('FERENGI', '0', '500');
+insert into planet values('BETASOIDE', '0', '2000');
+insert into planet values('VULCANO', '0', '1000');
+
+
+
+insert into weather values ('Sequía');
+insert into weather values ('Lluvia');
+insert into weather values ('Pico de intensidad');
+insert into weather values ('Condiciones optimas de presión y temperatura');
