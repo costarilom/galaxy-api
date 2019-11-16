@@ -8,17 +8,5 @@ public interface WeatherService {
 	
 	List<WeatherDto> getWeather();
 	
-	List<WeatherDto> getWeatherByDay(String day);
-	
-	//Sequia?
-	boolean droughtPeriod();
-	
-	//Lluvia?
-	boolean rainyPeriod();
-	
-	//Pico de intensidad
-	boolean intensityPeak();
-	
-	//Condiciones optimas
-	boolean optimalConditions();
+	WeatherDto getWeatherByDay(String day);
 }

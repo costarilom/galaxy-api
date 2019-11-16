@@ -28,7 +28,7 @@ public class GalaxyController {
 	
 
 	@RequestMapping(value = "/weather/day/{day}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
-	public List<WeatherDto> getWeatherByDay(@PathVariable String day, HttpServletRequest request) throws IOException {
+	public WeatherDto getWeatherByDay(@PathVariable String day, HttpServletRequest request) throws IOException {
 		return weatherService.getWeatherByDay(day);
 	}
 }
