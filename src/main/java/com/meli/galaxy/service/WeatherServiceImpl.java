@@ -1,5 +1,6 @@
 package com.meli.galaxy.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class WeatherServiceImpl implements WeatherService {
 	PlanetService planetService;
 	
 	@Override
-	public WeatherDto getWeather() {
+	public List<WeatherDto> getWeather() {
 		//sequia
 		int drought = 0;
 		//Lluvia 
@@ -117,21 +118,29 @@ public class WeatherServiceImpl implements WeatherService {
 		return false;
 	}
 
-	private WeatherDto createResponse(int drought, int rainy, int intensityPeak, int optimalConditions){
-		WeatherDto weatherDto = new WeatherDto();
+	private List<WeatherDto> createResponse(int drought, int rainy, int intensityPeak, int optimalConditions){
+		List<WeatherDto> weathersDto = new ArrayList<>();
 		
-		weatherDto.setWeather(Constantconfig.DROUGHT);
-		weatherDto.setDays(Integer.toString(drought));
+		WeatherDto weatherDtoDrought = new WeatherDto();
+		weatherDtoDrought.setWeather(Constantconfig.DROUGHT);
+		weatherDtoDrought.setDays(Integer.toString(drought));
+		weathersDto.add(weatherDtoDrought);
 		
-		weatherDto.setWeather(Constantconfig.RAINY);
-		weatherDto.setDays(Integer.toString(rainy));
+		WeatherDto weatherDtoDroughtRainy = new WeatherDto();
+		weatherDtoDroughtRainy.setWeather(Constantconfig.RAINY);
+		weatherDtoDroughtRainy.setDays(Integer.toString(rainy));
+		weathersDto.add(weatherDtoDroughtRainy);
 		
-		weatherDto.setWeather(Constantconfig.INTENSITYPEAK);
-		weatherDto.setDays(Integer.toString(intensityPeak));
+		WeatherDto weatherDtoDroughtIntensityPeak = new WeatherDto();
+		weatherDtoDroughtIntensityPeak.setWeather(Constantconfig.INTENSITYPEAK);
+		weatherDtoDroughtIntensityPeak.setDays(Integer.toString(intensityPeak));
+		weathersDto.add(weatherDtoDroughtIntensityPeak);
 		
-		weatherDto.setWeather(Constantconfig.OPTIMALCONDITIONS);
-		weatherDto.setDays(Integer.toString(optimalConditions));
+		WeatherDto weatherDtoDroughtOptimalConditions = new WeatherDto();
+		weatherDtoDroughtOptimalConditions.setWeather(Constantconfig.OPTIMALCONDITIONS);
+		weatherDtoDroughtOptimalConditions.setDays(Integer.toString(optimalConditions));
+		weathersDto.add(weatherDtoDroughtOptimalConditions);
 		
-		return weatherDto;
+		return weathersDto;
 	}
 }

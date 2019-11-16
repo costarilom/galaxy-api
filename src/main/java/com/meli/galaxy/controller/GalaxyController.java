@@ -1,6 +1,7 @@
 package com.meli.galaxy.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class GalaxyController {
 	WeatherService weatherService;
 
 	@RequestMapping(value = "/periods", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
-	public WeatherDto getAllPeriods(HttpServletRequest request) throws IOException {
+	public List<WeatherDto> getAllPeriods(HttpServletRequest request) throws IOException {
 		return weatherService.getWeather();
 	}
 	

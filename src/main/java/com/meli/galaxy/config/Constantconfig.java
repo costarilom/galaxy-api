@@ -7,7 +7,7 @@ public interface Constantconfig {
 	public static final int YEAR_MAX = 1;
 	
 	//Dia de inicio
-	public static final String dateFrom = "16-11-2019";
+	public static final String dateFrom = "15-11-2019";
 	
 	/*Coordenas iniciales para el sol*/
 	public static final String SOL_X = "0";
