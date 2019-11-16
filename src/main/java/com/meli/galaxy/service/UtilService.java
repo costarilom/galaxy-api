@@ -36,4 +36,35 @@ public class UtilService {
 		
 		return result;
 	}
+	
+	public Date getDateFrom(Date date) {
+		Date dateFrom = null;
+		if(date != null){
+			Calendar calFrom = Calendar.getInstance();
+			calFrom.setTime(date);
+			calFrom.set(Calendar.HOUR, 0);
+			calFrom.set(Calendar.MINUTE, 0);
+			calFrom.set(Calendar.SECOND, 0);
+			calFrom.set(Calendar.MILLISECOND, 0);
+			calFrom.set(Calendar.AM_PM, Calendar.AM);
+			dateFrom = calFrom.getTime();
+		}
+		return dateFrom;
+	}
+	
+	public Date getDateTo(Date date) {
+		Date dateTo = null;
+		if(date != null){
+			Calendar calTo = Calendar.getInstance();
+			calTo.setTime(date);
+			calTo.set(Calendar.HOUR, 23);
+			calTo.set(Calendar.MINUTE, 59);
+			calTo.set(Calendar.SECOND, 59);
+			calTo.set(Calendar.MILLISECOND, 999);
+			calTo.set(Calendar.AM_PM, Calendar.AM);
+			dateTo =  calTo.getTime();
+		}
+		
+		return dateTo;
+	}
 }

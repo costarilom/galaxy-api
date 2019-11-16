@@ -24,4 +24,10 @@ public interface Constantconfig {
 	/*Estados de migracion de datos*/
 	public static final String STATUS_PEN = "PEN";
 	public static final String STATUS_END = "END";
+	
+	/*Tipos de climas*/
+	public static final String DROUGHT = "Sequía";
+	public static final String RAINY = "Lluvia";
+	public static final String INTENSITYPEAK = "Pico de intensidad";
+	public static final String OPTIMALCONDITIONS = "Condiciones optimas de presión y temperatura";
 }

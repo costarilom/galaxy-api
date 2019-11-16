@@ -1,5 +1,6 @@
 package com.meli.galaxy.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,8 @@ import com.meli.galaxy.entity.Coordinate;
 public interface CoordinateRepository extends JpaRepository<Coordinate, Integer> {
 	
 	@Query("SELECT c FROM Coordinate c WHERE c.planet.id = :planetId ORDER BY c.id DESC")
-	List<Coordinate> findCoordinateByPlanetId(@Param("planetId") Integer planetId);
+	List<Coordinate> findCoordinatesByPlanetId(@Param("planetId") Integer planetId);
+	
+	@Query("SELECT c FROM Coordinate c WHERE c.date BETWEEN :dateFrom AND :dateTo")
+	List<Coordinate> findCoordinatesByDate(@Param("dateFrom") Date dateFrom, @Param("dateTo") Date dateTo);
 }

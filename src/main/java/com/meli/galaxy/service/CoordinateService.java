@@ -1,14 +1,17 @@
 package com.meli.galaxy.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.meli.galaxy.entity.Coordinate;
 
 public interface CoordinateService {
 	
-	public Coordinate save(Coordinate coordinate);
+	Coordinate save(Coordinate coordinate);
 
-	public void generateCoordinatesAll();
+	void generateCoordinatesAll();
 	
-	public List<Coordinate> getCoordinateByPlanetId(Integer planetId);
+	List<Coordinate> getCoordinateByPlanetId(Integer planetId);
+	
+	List<Coordinate> getCoordinatesByDate(Date date);
 }

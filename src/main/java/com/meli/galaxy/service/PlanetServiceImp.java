@@ -10,6 +10,7 @@ import com.meli.galaxy.config.Constantconfig;
 import com.meli.galaxy.entity.Coordinate;
 import com.meli.galaxy.entity.Planet;
 import com.meli.galaxy.repository.PlanetRepository;
+import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
 
 @Service
 public class PlanetServiceImp implements PlanetService {
@@ -107,6 +108,23 @@ public class PlanetServiceImp implements PlanetService {
 		} else if (distanceA > 0 && distanceB > 0 && distanceC > 0) {
 			result = true;
 		}
+		
+		return result;
+	}
+
+	@Override
+	public boolean planetsAlignedWithTheSun(Coordinate planetA, Coordinate planetB) {
+		//Verifico que el sol este alineado con los planetas 
+		Integer A = Integer.valueOf(planetB.getLongitude()) - Integer.valueOf(planetA.getLongitude());
+		Integer B = Integer.valueOf(planetB.getLatitude()) - Integer.valueOf(planetA.getLatitude());
+		
+		Integer C = Integer.valueOf(Constantconfig.SOL_X) - Integer.valueOf(planetA.getLongitude());
+		Integer D = Integer.valueOf(Constantconfig.SOL_Y) - Integer.valueOf(planetA.getLatitude());
+		
+		Integer aligned = (A * B) - (B * C);
+		
+		//Si la ecuacion da cero los planetas estan alineados, sino es un triangulo
+		boolean result = aligned == 0 ? true: false;
 		
 		return result;
 	}

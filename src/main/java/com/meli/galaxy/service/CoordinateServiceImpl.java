@@ -137,7 +137,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 	@Override
 	public List<Coordinate> getCoordinateByPlanetId(Integer planetId) {
-		return coordinateRepository.findCoordinateByPlanetId(planetId);
+		return coordinateRepository.findCoordinatesByPlanetId(planetId);
 	}
 
 	private Coordinate createCoordinate(Date date, String latitude, String longitude, Planet planet) {
@@ -179,5 +179,10 @@ public class CoordinateServiceImpl implements CoordinateService {
 		double[] coordinate = {XP, YP};    
 
 	    return coordinate;
+	}
+
+	@Override
+	public List<Coordinate> getCoordinatesByDate(Date date) {
+		return coordinateRepository.findCoordinatesByDate(utilService.getDateFrom(date), utilService.getDateTo(date));
 	}
 }

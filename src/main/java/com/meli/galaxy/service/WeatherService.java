@@ -1,8 +1,10 @@
 package com.meli.galaxy.service;
 
+import com.meli.galaxy.dto.WeatherDto;
+
 public interface WeatherService {
 	
-	String getWeather();
+	WeatherDto getWeather();
 	
 	//Sequia?
 	boolean droughtPeriod();

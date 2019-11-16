@@ -9,6 +9,7 @@ public class WeatherDto {
 	private String day;
 	private String days;
 	private String peak;
+	
 	public String getWeather() {
 		return weather;
 	}

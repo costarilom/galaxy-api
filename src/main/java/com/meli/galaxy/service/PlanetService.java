@@ -15,6 +15,8 @@ public interface PlanetService {
 	
 	boolean alignedPlanets(Coordinate planetA, Coordinate planetB, Coordinate planetC);
 	
+	boolean planetsAlignedWithTheSun(Coordinate planetA, Coordinate planetB);
+	
 	boolean maximumPerimeter(Coordinate planetA, Coordinate planetB, Coordinate planetC);
 	
 	boolean sunInsideTheTriangle(Coordinate planetA, Coordinate planetB, Coordinate planetC);
