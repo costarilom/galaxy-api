@@ -27,7 +27,6 @@ public class WeatherServiceImpl implements WeatherService {
 	
 	@Override
 	public WeatherDto getWeather() {
-		//Contadores de dias
 		//sequia
 		int drought = 0;
 		//Lluvia 

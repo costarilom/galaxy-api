@@ -80,7 +80,10 @@ public class CoordinateServiceImpl implements CoordinateService {
 			migrate.setStatus(Constantconfig.STATUS_END);
 			migrateService.save(migrate);
 			System.out.println("Finaliza la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
+		}else{
+			System.out.println("La generacion de coordenadas ya se encuentra realizada y disponible para ser consultada");
 		}
+		
 	}
 
 	private void rotatePlanet(Date date) {

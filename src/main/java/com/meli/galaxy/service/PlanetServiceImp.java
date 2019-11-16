@@ -30,13 +30,13 @@ public class PlanetServiceImp implements PlanetService {
 
 	@Override
 	public boolean alignedPlanets(Coordinate planetA, Coordinate planetB, Coordinate planetC) {
-		Integer A = Integer.valueOf(planetB.getLongitude()) - Integer.valueOf(planetA.getLongitude());
-		Integer B = Integer.valueOf(planetB.getLatitude()) - Integer.valueOf(planetA.getLatitude());
+		double A = Double.parseDouble(planetB.getLongitude()) - Double.parseDouble(planetA.getLongitude());
+		double B = Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(planetA.getLatitude());
 		
-		Integer C = Integer.valueOf(planetC.getLongitude()) - Integer.valueOf(planetA.getLongitude());
-		Integer D = Integer.valueOf(planetC.getLatitude()) - Integer.valueOf(planetA.getLatitude());
+		double C = Double.parseDouble(planetC.getLongitude()) - Double.parseDouble(planetA.getLongitude());
+		double D = Double.parseDouble(planetC.getLatitude()) - Double.parseDouble(planetA.getLatitude());
 		
-		Integer aligned = (A * B) - (B * C);
+		double aligned = (A * B) - (B * C);
 		
 		//Si la ecuacion da cero los planetas estan alineados, sino es un triangulo
 		boolean result = aligned == 0 ? true: false;
@@ -65,9 +65,9 @@ public class PlanetServiceImp implements PlanetService {
 
 	private float calculateDistance(Coordinate ponitA, Coordinate pointB){
 		//Resto los puntos X y los elevo al cuadrado
-		double X = Math.pow(Integer.valueOf(pointB.getLongitude()) - Integer.valueOf(ponitA.getLongitude()), 2);
+		double X = Math.pow(Double.parseDouble(pointB.getLongitude()) - Double.parseDouble(ponitA.getLongitude()), 2);
 		//Resto los puntos Y y los elevo al cuadrado
-		double Y = Math.pow(Integer.valueOf(pointB.getLatitude()) - Integer.valueOf(ponitA.getLatitude()), 2);
+		double Y = Math.pow(Double.parseDouble(pointB.getLatitude()) - Double.parseDouble(ponitA.getLatitude()), 2);
 		
 		//Calculo la raiz cuadrada de la suma de los mismos
 		float result = (float) Math.sqrt(X + Y);
@@ -84,23 +84,23 @@ public class PlanetServiceImp implements PlanetService {
 	@Override
 	public boolean sunInsideTheTriangle(Coordinate planetA, Coordinate planetB, Coordinate planetC) {
 		//Distancia A
-		double distanceA = (Integer.valueOf(planetA.getLongitude()) - Integer.valueOf(Constantconfig.SOL_X)) 
-							* (Integer.valueOf(planetB.getLatitude()) - Integer.valueOf(Constantconfig.SOL_Y)) - 
-				            (Integer.valueOf(planetB.getLongitude()) - Integer.valueOf(Constantconfig.SOL_X)) 
-				            * (Integer.valueOf(planetA.getLatitude()) - Integer.valueOf(Constantconfig.SOL_Y));
+		double distanceA = (Double.parseDouble(planetA.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+							* (Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y)) - 
+				            (Double.parseDouble(planetB.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+				            * (Double.parseDouble(planetA.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y));
 		
 		
 		//Distancia B
-		double distanceB = (Integer.valueOf(planetB.getLongitude()) - Integer.valueOf(Constantconfig.SOL_X)) 
-							* (Integer.valueOf(planetC.getLatitude()) - Integer.valueOf(Constantconfig.SOL_Y)) - 
-				            (Integer.valueOf(planetC.getLongitude()) - Integer.valueOf(Constantconfig.SOL_X)) 
-				            * (Integer.valueOf(planetB.getLatitude()) - Integer.valueOf(Constantconfig.SOL_Y));
+		double distanceB = (Double.parseDouble(planetB.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+							* (Double.parseDouble(planetC.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y)) - 
+				            (Double.parseDouble(planetC.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+				            * (Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y));
 		
 		//Distancia C
-		double distanceC = (Integer.valueOf(planetB.getLongitude()) - Integer.valueOf(Constantconfig.SOL_X)) 
-							* (Integer.valueOf(planetC.getLatitude()) - Integer.valueOf(Constantconfig.SOL_Y)) - 
-				            (Integer.valueOf(planetC.getLongitude()) - Integer.valueOf(Constantconfig.SOL_X)) 
-				            * (Integer.valueOf(planetB.getLatitude()) - Integer.valueOf(Constantconfig.SOL_Y));
+		double distanceC = (Double.parseDouble(planetB.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+							* (Double.parseDouble(planetC.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y)) - 
+				            (Double.parseDouble(planetC.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+				            * (Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y));
 		
 		boolean result = false;
 		if (distanceA < 0 && distanceB < 0 && distanceC < 0) {
@@ -115,13 +115,13 @@ public class PlanetServiceImp implements PlanetService {
 	@Override
 	public boolean planetsAlignedWithTheSun(Coordinate planetA, Coordinate planetB) {
 		//Verifico que el sol este alineado con los planetas 
-		Integer A = Integer.valueOf(planetB.getLongitude()) - Integer.valueOf(planetA.getLongitude());
-		Integer B = Integer.valueOf(planetB.getLatitude()) - Integer.valueOf(planetA.getLatitude());
+		double A = Double.parseDouble(planetB.getLongitude()) - Double.parseDouble(planetA.getLongitude());
+		double B = Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(planetA.getLatitude());
 		
-		Integer C = Integer.valueOf(Constantconfig.SOL_X) - Integer.valueOf(planetA.getLongitude());
-		Integer D = Integer.valueOf(Constantconfig.SOL_Y) - Integer.valueOf(planetA.getLatitude());
+		double C = Double.parseDouble(Constantconfig.SOL_X) - Double.parseDouble(planetA.getLongitude());
+		double D = Double.parseDouble(Constantconfig.SOL_Y) - Double.parseDouble(planetA.getLatitude());
 		
-		Integer aligned = (A * B) - (B * C);
+		double aligned = (A * B) - (B * C);
 		
 		//Si la ecuacion da cero los planetas estan alineados, sino es un triangulo
 		boolean result = aligned == 0 ? true: false;

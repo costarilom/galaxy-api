@@ -24,5 +24,4 @@ spring:
 server:
   max-http-header-size: 65236
   
-#cron.expression.coordinates.all: 0 0 2 * * ?
-cron.expression.coordinates.all: 0/5 * * * * ?
+cron.expression.coordinates.all: 0 0 2 * * ?
