@@ -9,6 +9,6 @@ import com.meli.galaxy.entity.Migrate;
 @Repository
 public interface MigrateRepository extends JpaRepository<Migrate, Integer>{
 
-	@Query("SELECT m FROM Migrate WHERE m.type = :type")
+	@Query("SELECT m FROM Migrate m WHERE m.type = :type")
 	Migrate findMigrateByType(@Param("type") String type);
 }

@@ -12,9 +12,9 @@ import com.meli.galaxy.entity.Planet;
 @Repository
 public interface PlanetRepository extends JpaRepository<Planet, Integer>{
 
-	@Query("SELECT p FROM planet p WHERE code = :code")
+	@Query("SELECT p FROM Planet p WHERE p.code = :code")
 	Planet findPlanetByCode(@Param("code") String code);
 	
-	@Query("SELECT p FROM planet p")
+	@Query("SELECT p FROM Planet p")
 	List<Planet> findAllPlanet();
 }

@@ -22,34 +22,32 @@ public class UtilService {
 		return year;
 	}
 	
-	public Double[] rightRotation(PlanetDto planetDto){
-		Double X = Double.valueOf(planetDto.getLongitude());
-		Double Y = Double.valueOf(planetDto.getLatitude());
-		Integer displacement = planetDto.getDisplacement();
-		
-		//Formula pa obtener X'
-		Double XP = X * Math.cos(displacement) + Y * Math.sin(displacement);
-		Double YP = Y * Math.cos(displacement) - X * Math.sin(displacement);
-		
+	public double[] leftRotation(PlanetDto planetDto){
+		double X = Double.valueOf(planetDto.getLatitude());
+		double Y = Double.valueOf(planetDto.getLongitude());		
+		double displacement = Math.toRadians(planetDto.getDisplacement());
+		 		
+		//Formula pa obtener X' 
+		double XP = X * Math.cos(displacement) + Y * Math.sin(displacement);
 		//Formula para obtener Y'
+		double YP = Y * Math.cos(displacement) - X * Math.sin(displacement);
 		
-		Double[] coordinate = {XP, YP};    
+		double[] coordinate = {XP, YP};    
 
 	    return coordinate;
 	}
 	
-	public Double[] leftRotation(PlanetDto planetDto){
-		Double X = Double.valueOf(planetDto.getLongitude());
-		Double Y = Double.valueOf(planetDto.getLatitude());
-		Integer displacement = planetDto.getDisplacement();
+	public double[] rightRotation(PlanetDto planetDto){
+		double X = Double.valueOf(planetDto.getLatitude());
+		double Y = Double.valueOf(planetDto.getLongitude());
+		double displacement = Math.toRadians(planetDto.getDisplacement());
 		
 		//Formula pa obtener X'
-		Double XP = X * Math.cos(displacement) - Y * Math.sin(displacement);
-		Double YP = X * Math.sin(displacement) + Y * Math.cos(displacement);
-		
+		double XP = X * Math.cos(displacement) - Y * Math.sin(displacement);
 		//Formula para obtener Y'
-		
-		Double[] coordinate = {XP, YP};    
+		double YP = X * Math.sin(displacement) + Y * Math.cos(displacement);
+				
+		double[] coordinate = {XP, YP};    
 
 	    return coordinate;
 	}

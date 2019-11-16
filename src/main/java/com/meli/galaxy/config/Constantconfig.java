@@ -13,4 +13,12 @@ public interface Constantconfig {
 	/*Code para la direccion de rotacion*/
 	public static final String RIGHT = "RIG";
 	public static final String LEFT = "LEF";
+	
+	/*Tipo de migracion de datos*/
+	public static final String ALL = "ALL";
+	public static final String DAY = "DAY";
+	
+	/*Estados de migracion de datos*/
+	public static final String STATUS_PEN = "PEN";
+	public static final String STATUS_END = "END";
 }
