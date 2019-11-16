@@ -129,7 +129,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 		List<Planet> planets = planetService.getAllPlanet();
 
 		for (Planet planet : planets) {
-			createCoordinate(new Date(), planet.getInitialLatitude(), planet.getInitialLongitude(), planet);
+			createCoordinate(utilService.stringToDate(Constantconfig.dateFrom), planet.getInitialLatitude(), planet.getInitialLongitude(), planet);
 		}
 	}
 

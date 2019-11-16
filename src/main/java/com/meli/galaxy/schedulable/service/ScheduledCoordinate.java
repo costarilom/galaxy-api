@@ -8,14 +8,14 @@ import com.meli.galaxy.service.CoordinateService;
 
 
 @Component
-public class ScheduledLicenceNotifications {
+public class ScheduledCoordinate {
 	
 	@Resource
 	CoordinateService coordinateService;
 
 	@Scheduled(cron="${cron.expression.coordinates.all}")
 	//Realiza la generacion de coordenadas para los proximos 10 años
-	public void notifyLicenses() {
+	public void coordinates() {
 		System.out.println("Inicia la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
 		coordinateService.generateCoordinatesAll();
 	}

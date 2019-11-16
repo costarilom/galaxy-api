@@ -97,10 +97,10 @@ public class PlanetServiceImp implements PlanetService {
 				            * (Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y));
 		
 		//Distancia C
-		double distanceC = (Double.parseDouble(planetB.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
-							* (Double.parseDouble(planetC.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y)) - 
-				            (Double.parseDouble(planetC.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
-				            * (Double.parseDouble(planetB.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y));
+		double distanceC = (Double.parseDouble(planetC.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+							* (Double.parseDouble(planetA.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y)) - 
+				            (Double.parseDouble(planetA.getLongitude()) - Double.parseDouble(Constantconfig.SOL_X)) 
+				            * (Double.parseDouble(planetC.getLatitude()) - Double.parseDouble(Constantconfig.SOL_Y));
 		
 		boolean result = false;
 		if (distanceA < 0 && distanceB < 0 && distanceC < 0) {

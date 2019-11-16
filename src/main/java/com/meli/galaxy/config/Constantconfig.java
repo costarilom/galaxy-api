@@ -4,7 +4,7 @@ public interface Constantconfig {
 	
 	public static final String SYSTEM_TIMEZONE = "America/Argentina/Buenos_Aires";
 
-	public static final int YEAR_MAX = 1;
+	public static final int YEAR_MAX = 10;
 	
 	//Dia de inicio
 	public static final String dateFrom = "15-11-2019";
