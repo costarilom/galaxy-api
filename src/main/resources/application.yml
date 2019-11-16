@@ -1,6 +1,6 @@
 spring:
   datasource: 
-    url: jdbc:sqlserver://192.168.1.113:1433;databaseName=galaxy
+    url: jdbc:sqlserver://192.168.0.24:1433;databaseName=galaxy
     username: sa
     password: admin1234
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver

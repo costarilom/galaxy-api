@@ -36,7 +36,7 @@ public class PlanetServiceImp implements PlanetService {
 		double C = Double.parseDouble(planetC.getLongitude()) - Double.parseDouble(planetA.getLongitude());
 		double D = Double.parseDouble(planetC.getLatitude()) - Double.parseDouble(planetA.getLatitude());
 		
-		double aligned = (A * B) - (B * C);
+		double aligned = (A * D) - (B * C);
 		
 		//Si la ecuacion da cero los planetas estan alineados, sino es un triangulo
 		boolean result = aligned == 0 ? true: false;
@@ -121,7 +121,7 @@ public class PlanetServiceImp implements PlanetService {
 		double C = Double.parseDouble(Constantconfig.SOL_X) - Double.parseDouble(planetA.getLongitude());
 		double D = Double.parseDouble(Constantconfig.SOL_Y) - Double.parseDouble(planetA.getLatitude());
 		
-		double aligned = (A * B) - (B * C);
+		double aligned = (A * D) - (B * C);
 		
 		//Si la ecuacion da cero los planetas estan alineados, sino es un triangulo
 		boolean result = aligned == 0 ? true: false;
