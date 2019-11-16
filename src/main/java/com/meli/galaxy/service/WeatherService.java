@@ -8,6 +8,8 @@ public interface WeatherService {
 	
 	List<WeatherDto> getWeather();
 	
+	List<WeatherDto> getWeatherByDay(String day);
+	
 	//Sequia?
 	boolean droughtPeriod();
 	

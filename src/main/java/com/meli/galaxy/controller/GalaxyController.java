@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,4 +27,8 @@ public class GalaxyController {
 	}
 	
 
+	@RequestMapping(value = "/weather/day/{day}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public List<WeatherDto> getWeatherByDay(@PathVariable String day, HttpServletRequest request) throws IOException {
+		return weatherService.getWeatherByDay(day);
+	}
 }

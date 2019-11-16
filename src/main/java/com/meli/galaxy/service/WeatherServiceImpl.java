@@ -143,4 +143,10 @@ public class WeatherServiceImpl implements WeatherService {
 		
 		return weathersDto;
 	}
+
+	@Override
+	public List<WeatherDto> getWeatherByDay(String day) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

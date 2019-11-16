@@ -36,9 +36,13 @@ public class Migrate implements Serializable {
 	@Column(name="status", columnDefinition = "varchar(5) not null")
 	private String status;
 	
-	@Column(name="date", columnDefinition = "DATE not null")
+	@Column(name="date_from", columnDefinition = "DATE not null")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = Constantconfig.SYSTEM_TIMEZONE)
-	private Date date;
+	private Date dateFrom;
+	
+	@Column(name="date_to", columnDefinition = "DATE not null")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = Constantconfig.SYSTEM_TIMEZONE)
+	private Date dateTo;
 
 	public Integer getId() {
 		return id;
@@ -64,14 +68,21 @@ public class Migrate implements Serializable {
 		this.status = status;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateFrom() {
+		return dateFrom;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
 	}
-	
+
+	public Date getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
+	}	
 	
 	
 }

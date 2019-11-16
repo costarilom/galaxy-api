@@ -44,7 +44,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 			Migrate migrate = new Migrate();
 			migrate.setType(Constantconfig.ALL);
 			migrate.setStatus(Constantconfig.STATUS_PEN);
-			migrate.setDate(dateFrom);
+			migrate.setDateFrom(new Date());
 			migrateService.save(migrate);
 			
 			
@@ -78,6 +78,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 			// hago el update a status END
 			migrate.setStatus(Constantconfig.STATUS_END);
+			migrate.setDateTo(new Date());
 			migrateService.save(migrate);
 			System.out.println("Finaliza la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
 		}else{
@@ -170,8 +171,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 	}
 	
 	public double[] rightRotation(PlanetDto planetDto){
-		double X = Double.valueOf(planetDto.getLatitude());
-		double Y = Double.valueOf(planetDto.getLongitude());
+		double X = Double.valueOf(planetDto.getLongitude());
+		double Y = Double.valueOf(planetDto.getLatitude());
 		double displacement = Math.toRadians(planetDto.getDisplacement());
 		
 		//Formula pa obtener X'

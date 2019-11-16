@@ -3,7 +3,8 @@ CREATE TABLE [dbo].[migrate](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[type] [varchar](5) NOT NULL,
 	[status] [varchar](5) NOT NULL,
-	[date] [datetime] NULL,
+	[date_from] [datetime] NULL,
+	[date_to] [datetime] NULL,
 PRIMARY KEY CLUSTERED
 (
 	[id] ASC
