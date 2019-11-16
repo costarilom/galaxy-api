@@ -36,7 +36,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 		// Consulto si ya se hizo una migracion total
 		if (migrateService.getMigrateByType(Constantconfig.ALL) == null) {
 			// Obtengo el dia actual para sumarle los 10 años
-			Date dateFrom = new Date();
+			Date dateFrom = utilService.stringToDate(Constantconfig.dateFrom);
+			
 			System.out.println("El dia actual es " + dateFrom + "\n");
 						
 			// Hago el insert con status pen
@@ -108,12 +109,12 @@ public class CoordinateServiceImpl implements CoordinateService {
 			 * rotacion (Hacia la derecha o hacia la izquierda)
 			 */
 			if (planet.getDirectionOfRotation().equalsIgnoreCase(Constantconfig.RIGHT)) {
-				double[] coordinateNew = utilService.rightRotation(planetDto);
+				double[] coordinateNew = rightRotation(planetDto);
 				
 				// Ingreso las nuevas coordenadas
 				createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
 			} else {
-				double[] coordinateNew = utilService.leftRotation(planetDto);
+				double[] coordinateNew = leftRotation(planetDto);
 				
 				// Ingreso las nuevas coordenadas
 				createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
@@ -148,5 +149,35 @@ public class CoordinateServiceImpl implements CoordinateService {
 		coordinate.setPlanet(planet);
 
 		return save(coordinate);
+	}
+	
+	public double[] leftRotation(PlanetDto planetDto){
+		double X = Double.valueOf(planetDto.getLatitude());
+		double Y = Double.valueOf(planetDto.getLongitude());		
+		double displacement = Math.toRadians(planetDto.getDisplacement());
+		 		
+		//Formula pa obtener X' 
+		double XP = X * Math.cos(displacement) + Y * Math.sin(displacement);
+		//Formula para obtener Y'
+		double YP = Y * Math.cos(displacement) - X * Math.sin(displacement);
+		
+		double[] coordinate = {XP, YP};    
+
+	    return coordinate;
+	}
+	
+	public double[] rightRotation(PlanetDto planetDto){
+		double X = Double.valueOf(planetDto.getLatitude());
+		double Y = Double.valueOf(planetDto.getLongitude());
+		double displacement = Math.toRadians(planetDto.getDisplacement());
+		
+		//Formula pa obtener X'
+		double XP = X * Math.cos(displacement) - Y * Math.sin(displacement);
+		//Formula para obtener Y'
+		double YP = X * Math.sin(displacement) + Y * Math.cos(displacement);
+				
+		double[] coordinate = {XP, YP};    
+
+	    return coordinate;
 	}
 }

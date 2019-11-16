@@ -18,7 +18,6 @@ public class ScheduledLicenceNotifications {
 	public void notifyLicenses() {
 		System.out.println("Inicia la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
 		coordinateService.generateCoordinatesAll();
-		
 	}
 	
 }

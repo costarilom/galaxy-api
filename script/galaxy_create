@@ -28,6 +28,7 @@ GO
 
 CREATE TABLE [dbo].[weather](
 	[id] [int] IDENTITY(1,1) NOT NULL,
+	[code] [varchar](3) NOT NULL,
 	[name] [varchar](255) NOT NULL,
 PRIMARY KEY CLUSTERED
 (
