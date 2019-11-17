@@ -4,8 +4,10 @@ insert into planet values('VUL', 'VULCANO', '1000', '0', 5, 'LEF');
 GO
 
 
-insert into weather values ('Sequía');
-insert into weather values ('Lluvia');
-insert into weather values ('Pico de intensidad');
-insert into weather values ('Condiciones optimas de presión y temperatura');
+insert into weather values ('DRO','Sequía');
+insert into weather values ('RAI','Lluvia');
+insert into weather values ('INT','Pico de intensidad');
+insert into weather values ('OPT','Condiciones optimas de presión y temperatura');
 GO
+
+

@@ -30,4 +30,9 @@ public interface Constantconfig {
 	public static final String RAINY = "Lluvia";
 	public static final String INTENSITYPEAK = "Pico de intensidad";
 	public static final String OPTIMALCONDITIONS = "Condiciones optimas de presión y temperatura";
+	
+	public static final String DROUGHT_CODE = "DRO";
+	public static final String RAINYT_CODE = "RAI";
+	public static final String INTENSITYPEAKT_CODE = "INTd";
+	public static final String OPTIMALCONDITIONST_CODE = "OPT";
 }

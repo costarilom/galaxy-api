@@ -21,11 +21,11 @@ import java.util.Date;
 
 //Tabla donde alojo las consultas de clima realizadas
 
-@Table(name = "consultation_weather")
+@Table(name = "meteorological_conditions")
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @EntityListeners(AuditingEntityListener.class)
-public class ConsultationWeather implements Serializable {
+public class MeteorologicalConditions implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

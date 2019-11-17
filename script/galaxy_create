@@ -56,7 +56,7 @@ ALTER TABLE [dbo].[coordinate]  WITH CHECK ADD  CONSTRAINT [FK_planet] FOREIGN K
 REFERENCES [dbo].[planet] ([id])
 GO
 
-CREATE TABLE [dbo].[consultation_weather](
+CREATE TABLE [dbo].[meteorological_conditions](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[date] [datetime] NOT NULL,
 	[year] [int] NOT NULL,
@@ -68,7 +68,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[consultation_weather]  WITH CHECK ADD  CONSTRAINT [FK_weather] FOREIGN KEY([weather_id])
+ALTER TABLE [dbo].[meteorological_conditions]  WITH CHECK ADD  CONSTRAINT [FK_weather] FOREIGN KEY([weather_id])
 REFERENCES [dbo].[weather] ([id])
 
 

@@ -10,7 +10,6 @@ import com.meli.galaxy.config.Constantconfig;
 import com.meli.galaxy.entity.Coordinate;
 import com.meli.galaxy.entity.Planet;
 import com.meli.galaxy.repository.PlanetRepository;
-import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
 
 @Service
 public class PlanetServiceImp implements PlanetService {

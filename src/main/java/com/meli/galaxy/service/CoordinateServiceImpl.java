@@ -3,12 +3,8 @@ package com.meli.galaxy.service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
-
 import com.meli.galaxy.config.Constantconfig;
 import com.meli.galaxy.dto.PlanetDto;
 import com.meli.galaxy.entity.Coordinate;
@@ -30,6 +26,9 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 	@Resource
 	CoordinateRepository coordinateRepository;
+	
+	@Resource
+	WeatherService weatherService;
 
 	@Override
 	public void generateCoordinatesAll() {
@@ -39,8 +38,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 			Date dateFrom = utilService.stringToDate(Constantconfig.dateFrom);
 			
 			System.out.println("El dia actual es " + dateFrom + "\n");
-						
-			// Hago el insert con status pen
+					
+			// Hago el insert con status pendiente
 			Migrate migrate = new Migrate();
 			migrate.setType(Constantconfig.ALL);
 			migrate.setStatus(Constantconfig.STATUS_PEN);
@@ -56,21 +55,19 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 			System.out.println("Inserto coordenadas desde el dia " + dateFrom + " al dia " + dateTo + "\n");
 
-			// Insertar en coodinate las coordenadas iniciales de cada planeta
+			// Insertar las coordenadas iniciales de cada planeta
 			insertInitialCoordinate();
 
 			// Comienzo la iteracion por dia
 			while (dateFrom.getTime() < dateTo.getTime()) {
 				// controlo de no haber llegado a la fecha de fin
 				if (!dateFrom.after(dateTo)) {
-					// Incrementas un dia (86400000 es un dia en milisegundos)
-					dateFrom.setTime((long) dateFrom.getTime() + (86400000));
+					// Incrementas un dia
+					dateFrom = utilService.addDay(dateFrom, "1");
 
 					// Llamar al meto de rotacion de planetas
 					rotatePlanet(dateFrom);
-
-					// Hacer el insert en la tabla de coordenadas
-
+					
 					System.out.print("Se procesa el dia " + dateFrom + "\n");
 
 				}
@@ -92,12 +89,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 		for (Planet planet : planets) {
 			PlanetDto planetDto = new PlanetDto();
-			/*
-			 * Consulto si tengo alguna coordenada persistida para ese planeta,
-			 * sino uso las coordenadas iniciales
-			 */
+			//Buco las ultimas coordenadas para el planeta
 			List<Coordinate> coordinate = getCoordinateByPlanetId(planet.getId());
-			// Si encontre coordenadas las uso, sino uso las iniciales
 			if (coordinate != null && !coordinate.isEmpty()) {
 				planetDto.setLatitude(coordinate.get(0).getLatitude());
 				planetDto.setLongitude(coordinate.get(0).getLongitude());
@@ -119,15 +112,20 @@ public class CoordinateServiceImpl implements CoordinateService {
 				// Ingreso las nuevas coordenadas
 				createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
 			}
+			
+			//Inserto la condicion meteorologia para el dia 
+			weatherService.saveWeatherByDate(date);
 		}
 	}
 
 	private void insertInitialCoordinate() {
 		List<Planet> planets = planetService.getAllPlanet();
-
+		Date date = utilService.stringToDate(Constantconfig.dateFrom);
 		for (Planet planet : planets) {
-			createCoordinate(utilService.stringToDate(Constantconfig.dateFrom), planet.getInitialLongitude(), planet.getInitialLatitude(), planet);
+			createCoordinate(date, planet.getInitialLongitude(), planet.getInitialLatitude(), planet);
 		}
+		//Genero la condicion meteorologica incial
+		weatherService.saveWeatherByDate(date);
 	}
 
 	@Override
@@ -156,7 +154,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 		double Y = Double.valueOf(planetDto.getLatitude());		
 		double displacement = Math.toRadians(planetDto.getDisplacement());
 		 		
-		//Formula pa obtener X' 
+		//Formula para obtener X' 
 		double XP = X * Math.cos(displacement) + Y * Math.sin(displacement);
 		//Formula para obtener Y'
 		double YP = Y * Math.cos(displacement) - X * Math.sin(displacement);
@@ -171,7 +169,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 		double Y = Double.valueOf(planetDto.getLatitude());
 		double displacement = Math.toRadians(planetDto.getDisplacement());
 		
-		//Formula pa obtener X'
+		//Formula para obtener X'
 		double XP = X * Math.cos(displacement) - Y * Math.sin(displacement);
 		//Formula para obtener Y'
 		double YP = X * Math.sin(displacement) + Y * Math.cos(displacement);

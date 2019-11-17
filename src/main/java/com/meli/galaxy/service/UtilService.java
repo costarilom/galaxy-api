@@ -67,4 +67,11 @@ public class UtilService {
 		
 		return dateTo;
 	}
+	
+	public Date addDay(Date date, String day){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date); 
+		calendar.add(Calendar.DAY_OF_YEAR, Integer.parseInt(day));  
+		return  calendar.getTime();
+	}
 }
