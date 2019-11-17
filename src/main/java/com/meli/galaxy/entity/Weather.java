@@ -25,6 +25,9 @@ public class Weather implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(name="code", columnDefinition = "varchar(3) not null")
+	private String code;
+	
 	@Column(name="name", columnDefinition = "varchar(255) not null")
 	private String name;
 
@@ -34,6 +37,15 @@ public class Weather implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {

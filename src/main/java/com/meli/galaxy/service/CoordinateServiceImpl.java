@@ -103,19 +103,17 @@ public class CoordinateServiceImpl implements CoordinateService {
 			 */
 			if (planet.getDirectionOfRotation().equalsIgnoreCase(Constantconfig.RIGHT)) {
 				double[] coordinateNew = rightRotation(planetDto);
-				
-				// Ingreso las nuevas coordenadas
-				createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
 			} else {
 				double[] coordinateNew = leftRotation(planetDto);
-				
-				// Ingreso las nuevas coordenadas
-				createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
 			}
 			
-			//Inserto la condicion meteorologia para el dia 
-			weatherService.saveWeatherByDate(date);
+			
+			// Ingreso las nuevas coordenadas
+			createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
 		}
+		
+		//Inserto la condicion meteorologia para el dia 
+		weatherService.saveWeatherByDate(date);
 	}
 
 	private void insertInitialCoordinate() {
