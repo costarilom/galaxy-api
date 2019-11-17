@@ -1,13 +1,10 @@
 package com.meli.galaxy.service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.meli.galaxy.config.Constantconfig;
-import com.meli.galaxy.dto.WeatherDto;
 import com.meli.galaxy.entity.Coordinate;
 import com.meli.galaxy.entity.Weather;
 import com.meli.galaxy.repository.WeatherRepository;
@@ -30,7 +27,7 @@ public class WeatherServiceImpl implements WeatherService {
 	@Resource
 	MeteorologicalConditionsService meteorologicalConditionsService;
 
-	@Override
+	/*@Override
 	public List<WeatherDto> getWeather() {
 		// sequia
 		int drought = 0;
@@ -166,7 +163,7 @@ public class WeatherServiceImpl implements WeatherService {
 		weatherDto.setWeather(weather);
 		
 		return weatherDto;
-	}
+	}*/
 
 	@Override
 	public void saveWeatherByDate(Date date) {

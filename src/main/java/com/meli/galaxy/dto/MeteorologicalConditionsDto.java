@@ -3,7 +3,7 @@ package com.meli.galaxy.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class WeatherDto {
+public class MeteorologicalConditionsDto {
 
 	private String weather;
 	private String day;
@@ -35,5 +35,11 @@ public class WeatherDto {
 		this.peak = peak;
 	}
 	
+	public MeteorologicalConditionsDto(){}
+	
+	public MeteorologicalConditionsDto(String weather, String days){
+		this.weather = weather;
+		this.days = days;
+	}
 	
 }

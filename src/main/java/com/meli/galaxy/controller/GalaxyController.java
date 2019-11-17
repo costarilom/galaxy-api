@@ -11,24 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.meli.galaxy.dto.WeatherDto;
-import com.meli.galaxy.service.WeatherService;
+import com.meli.galaxy.dto.MeteorologicalConditionsDto;
+import com.meli.galaxy.service.MeteorologicalConditionsService;
 
 @RestController
 @RequestMapping("/galaxy")
 public class GalaxyController {
 
 	@Resource
-	WeatherService weatherService;
+	MeteorologicalConditionsService meteorologicalConditionsService;
 
 	@RequestMapping(value = "/periods", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
-	public List<WeatherDto> getAllPeriods(HttpServletRequest request) throws IOException {
-		return weatherService.getWeather();
+	public List<MeteorologicalConditionsDto> getAllPeriods(HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.getPeriods();
 	}
 	
-
 	@RequestMapping(value = "/weather/day/{day}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
-	public WeatherDto getWeatherByDay(@PathVariable String day, HttpServletRequest request) throws IOException {
-		return weatherService.getWeatherByDay(day);
+	public MeteorologicalConditionsDto getWeatherByDay(@PathVariable String day, HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.getWeatherByDay(day);
+	}
+	
+	@RequestMapping(value = "/periods/year/{year}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public List<MeteorologicalConditionsDto> getPeriodsByYear(@PathVariable String year, HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.getPeriodsByYear(year);
+	}
+	
+	@RequestMapping(value = "/periods/code/{code}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public MeteorologicalConditionsDto getPeriodsByCode(@PathVariable String code, HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.getPeriodsByCode(code);
 	}
 }
