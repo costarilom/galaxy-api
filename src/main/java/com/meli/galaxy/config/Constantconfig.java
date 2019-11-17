@@ -32,7 +32,7 @@ public interface Constantconfig {
 	public static final String OPTIMALCONDITIONS = "Condiciones optimas de presión y temperatura";
 	
 	public static final String DROUGHT_CODE = "DRO";
-	public static final String RAINYT_CODE = "RAI";
-	public static final String INTENSITYPEAKT_CODE = "INTd";
+	public static final String RAINY_CODE = "RAI";
+	public static final String INTENSITYPEAKT_CODE = "INT";
 	public static final String OPTIMALCONDITIONST_CODE = "OPT";
 }

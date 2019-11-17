@@ -194,9 +194,9 @@ public class WeatherServiceImpl implements WeatherService {
 				if (sunInsideTheTriangle) {
 					boolean maximumPerimeter = planetService.maximumPerimeter(planetA, planetB, planetC);
 					if (maximumPerimeter) {
-						saveMeteorologicalCondition(date, Constantconfig.INTENSITYPEAK);
+						saveMeteorologicalCondition(date, Constantconfig.INTENSITYPEAKT_CODE);
 					} else {
-						saveMeteorologicalCondition(date, Constantconfig.RAINY);
+						saveMeteorologicalCondition(date, Constantconfig.RAINY_CODE);
 					}
 				}
 			}

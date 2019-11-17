@@ -101,10 +101,11 @@ public class CoordinateServiceImpl implements CoordinateService {
 			 * Consulto cual es el desplazamiento del planeta y realizo la
 			 * rotacion (Hacia la derecha o hacia la izquierda)
 			 */
+			double[] coordinateNew = null;
 			if (planet.getDirectionOfRotation().equalsIgnoreCase(Constantconfig.RIGHT)) {
-				double[] coordinateNew = rightRotation(planetDto);
+				coordinateNew = rightRotation(planetDto);
 			} else {
-				double[] coordinateNew = leftRotation(planetDto);
+				coordinateNew = leftRotation(planetDto);
 			}
 			
 			
