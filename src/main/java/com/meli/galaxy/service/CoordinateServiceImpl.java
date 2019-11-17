@@ -102,11 +102,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 				planetDto.setLatitude(coordinate.get(0).getLatitude());
 				planetDto.setLongitude(coordinate.get(0).getLongitude());
 				planetDto.setDisplacement(planet.getDisplacement());
-			} else {
-				planetDto.setLatitude(planet.getInitialLatitude());
-				planetDto.setLongitude(planet.getInitialLongitude());
-				planetDto.setDisplacement(planet.getDisplacement());
-			}
+			} 
 
 			/*
 			 * Consulto cual es el desplazamiento del planeta y realizo la
@@ -130,7 +126,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 		List<Planet> planets = planetService.getAllPlanet();
 
 		for (Planet planet : planets) {
-			createCoordinate(utilService.stringToDate(Constantconfig.dateFrom), planet.getInitialLatitude(), planet.getInitialLongitude(), planet);
+			createCoordinate(utilService.stringToDate(Constantconfig.dateFrom), planet.getInitialLongitude(), planet.getInitialLatitude(), planet);
 		}
 	}
 
@@ -144,7 +140,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 		return coordinateRepository.findCoordinatesByPlanetId(planetId);
 	}
 
-	private Coordinate createCoordinate(Date date, String latitude, String longitude, Planet planet) {
+	private Coordinate createCoordinate(Date date, String longitude, String latitude, Planet planet) {
 		Coordinate coordinate = new Coordinate();
 		coordinate.setDate(date);
 		coordinate.setYear(utilService.getYearByDate(date));
@@ -155,9 +151,9 @@ public class CoordinateServiceImpl implements CoordinateService {
 		return save(coordinate);
 	}
 	
-	public double[] leftRotation(PlanetDto planetDto){
-		double X = Double.valueOf(planetDto.getLatitude());
-		double Y = Double.valueOf(planetDto.getLongitude());		
+	public double[] rightRotation(PlanetDto planetDto){
+		double X = Double.valueOf(planetDto.getLongitude());
+		double Y = Double.valueOf(planetDto.getLatitude());		
 		double displacement = Math.toRadians(planetDto.getDisplacement());
 		 		
 		//Formula pa obtener X' 
@@ -170,7 +166,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 	    return coordinate;
 	}
 	
-	public double[] rightRotation(PlanetDto planetDto){
+	public double[] leftRotation(PlanetDto planetDto){
 		double X = Double.valueOf(planetDto.getLongitude());
 		double Y = Double.valueOf(planetDto.getLatitude());
 		double displacement = Math.toRadians(planetDto.getDisplacement());
