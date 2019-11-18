@@ -12,7 +12,7 @@
 	<artifactId>galaxy-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>galaxy-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Sistema para la prediccion del clima en una galaxia</description>
 
 	<properties>
 		<java.version>1.8</java.version>

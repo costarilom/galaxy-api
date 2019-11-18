@@ -1,3 +1,4 @@
+
 package com.meli.galaxy.config;
 
 public interface Constantconfig {
@@ -25,12 +26,7 @@ public interface Constantconfig {
 	public static final String STATUS_PEN = "PEN";
 	public static final String STATUS_END = "END";
 	
-	/*Tipos de climas*/
-	public static final String DROUGHT = "Sequía";
-	public static final String RAINY = "Lluvia";
-	public static final String INTENSITYPEAK = "Pico de intensidad";
-	public static final String OPTIMALCONDITIONS = "Condiciones optimas de presión y temperatura";
-	
+	/*Code para tipos de climas*/
 	public static final String DROUGHT_CODE = "DRO";
 	public static final String RAINY_CODE = "RAI";
 	public static final String INTENSITYPEAKT_CODE = "INT";

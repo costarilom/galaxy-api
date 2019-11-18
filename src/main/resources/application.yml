@@ -24,5 +24,10 @@ spring:
 server:
   max-http-header-size: 65236
   
+  logging:
+    config: classpath:logback-spring.xml
+
+
+     
 #cron.expression.coordinates.all: 0 0 2 * * ?
 cron.expression.coordinates.all: 0/5 * * * * ?
