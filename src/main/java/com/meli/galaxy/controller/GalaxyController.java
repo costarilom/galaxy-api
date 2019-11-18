@@ -45,7 +45,7 @@ public class GalaxyController {
 		return meteorologicalConditionsService.getPeriodsByCode(code);
 	}
 	
-	@RequestMapping(value = "/migrate", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/migrate", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
 	public MeteorologicalConditionsDto getPeriodsByCode(@PathVariable String code, HttpServletRequest request) throws IOException {
 		coordinateService.generateCoordinatesAll();
 	}
