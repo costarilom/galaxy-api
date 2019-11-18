@@ -40,7 +40,7 @@ public class Migrate implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = Constantconfig.SYSTEM_TIMEZONE)
 	private Date dateFrom;
 	
-	@Column(name="date_to", columnDefinition = "DATE not null")
+	@Column(name="date_to", columnDefinition = "DATE")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = Constantconfig.SYSTEM_TIMEZONE)
 	private Date dateTo;
 
