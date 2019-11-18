@@ -37,6 +37,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 			// Obtengo el dia actual para sumarle los 10 años
 			Date dateFrom = utilService.stringToDate(Constantconfig.dateFrom);
 			
+			logger.info("Inicia la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
 			System.out.println("El dia actual es " + dateFrom + "\n");
 					
 			// Hago el insert con status pendiente
