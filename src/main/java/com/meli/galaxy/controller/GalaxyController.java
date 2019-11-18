@@ -20,9 +20,6 @@ public class GalaxyController {
 
 	@Resource
 	MeteorologicalConditionsService meteorologicalConditionsService;
-	
-	@Resource
-	CoordinateService coordinateService;
 
 
 	@RequestMapping(value = "/periods", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
@@ -43,10 +40,5 @@ public class GalaxyController {
 	@RequestMapping(value = "/periods/code/{code}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
 	public MeteorologicalConditionsDto getPeriodsByCode(@PathVariable String code, HttpServletRequest request) throws IOException {
 		return meteorologicalConditionsService.getPeriodsByCode(code);
-	}
-	
-	@RequestMapping(value = "/migrate", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
-	public MeteorologicalConditionsDto getPeriodsByCode(@PathVariable String code, HttpServletRequest request) throws IOException {
-		coordinateService.generateCoordinatesAll();
 	}
 }
