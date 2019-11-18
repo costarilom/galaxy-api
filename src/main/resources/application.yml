@@ -1,21 +1,24 @@
 spring:
   datasource: 
-    url: jdbc:sqlserver://192.168.0.24:1433;databaseName=galaxy
-    username: sa
-    password: admin1234
-    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:postgresql://ec2-54-221-195-148.compute-1.amazonaws.com:5432/de04rbbandbir0?sslmode=require
+    username: ewhopjtxjfenzh
+    password: f2626ad66a3b1128113fd8e78533a976022001511f6ad2ec189681f61cc55f97
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+  initializacion-mode: always
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
   jpa:
+    database: POSTGRESQL
     show-sql: true
     hibernate:
-      #ddl-auto: update
+      ddl-auto: update
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.SQLServer2012Dialect
+       dialect: org.hibernate.dialect.PostgreSQLDialect
         #ddl-auto: update
   http:
     multipart:
