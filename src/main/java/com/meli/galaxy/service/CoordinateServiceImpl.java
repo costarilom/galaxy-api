@@ -4,6 +4,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import com.meli.galaxy.config.Constantconfig;
 import com.meli.galaxy.dto.PlanetDto;
@@ -15,6 +18,8 @@ import com.meli.galaxy.repository.CoordinateRepository;
 @Service
 public class CoordinateServiceImpl implements CoordinateService {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Resource
 	UtilService utilService;
 
@@ -37,8 +42,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 			// Obtengo el dia actual para sumarle los 10 años
 			Date dateFrom = utilService.stringToDate(Constantconfig.dateFrom);
 			
-			logger.info("Inicia la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
-			System.out.println("El dia actual es " + dateFrom + "\n");
+			logger.info("El dia actual es " + dateFrom + "\n");
 					
 			// Hago el insert con status pendiente
 			Migrate migrate = new Migrate();
@@ -54,7 +58,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 			Date dateTo = calendar.getTime();
 
-			System.out.println("Inserto coordenadas desde el dia " + dateFrom + " al dia " + dateTo + "\n");
+			logger.info("Inserto coordenadas desde el dia " + dateFrom + " al dia " + dateTo + "\n");
 
 			// Insertar las coordenadas iniciales de cada planeta
 			insertInitialCoordinate();
@@ -69,8 +73,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 					// Llamar al meto de rotacion de planetas
 					rotatePlanet(dateFrom);
 					
-					System.out.print("Se procesa el dia " + dateFrom + "\n");
-
+					logger.info("Se procesa el dia " + dateFrom + "\n");
 				}
 			}
 
@@ -78,9 +81,9 @@ public class CoordinateServiceImpl implements CoordinateService {
 			migrate.setStatus(Constantconfig.STATUS_END);
 			migrate.setDateTo(new Date());
 			migrateService.save(migrate);
-			System.out.println("Finaliza la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
+			logger.info("Finaliza la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
 		}else{
-			System.out.println("La generacion de coordenadas ya se encuentra realizada y disponible para ser consultada");
+			logger.info("La generacion de coordenadas ya se encuentra realizada y disponible para ser consultada");
 		}
 		
 	}
@@ -93,6 +96,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 			//Buco las ultimas coordenadas para el planeta
 			List<Coordinate> coordinate = getCoordinateByPlanetId(planet.getId());
 			if (coordinate != null && !coordinate.isEmpty()) {
+				//Obtengo una lista de coordenadas, pero la que importa es la ultima
+				planetDto.setId(coordinate.get(0).getId());
 				planetDto.setLatitude(coordinate.get(0).getLatitude());
 				planetDto.setLongitude(coordinate.get(0).getLongitude());
 				planetDto.setDisplacement(planet.getDisplacement());
@@ -109,9 +114,13 @@ public class CoordinateServiceImpl implements CoordinateService {
 				coordinateNew = leftRotation(planetDto);
 			}
 			
-			
 			// Ingreso las nuevas coordenadas
-			createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
+			if(coordinateNew != null){
+				createCoordinate(date, Double.toString(coordinateNew[0]), Double.toString(coordinateNew[1]), planet);
+			}
+			else{
+				logger.info("No se pudieron obtener las nuevas coordenadas para el planeta " + planetDto.getId() );
+			}
 		}
 		
 		//Inserto la condicion meteorologia para el dia 
@@ -135,6 +144,7 @@ public class CoordinateServiceImpl implements CoordinateService {
 
 	@Override
 	public List<Coordinate> getCoordinateByPlanetId(Integer planetId) {
+		logger.info("Se buscan las coordenadas del planeta " + planetId);
 		return coordinateRepository.findCoordinatesByPlanetId(planetId);
 	}
 
@@ -145,6 +155,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 		coordinate.setLatitude(latitude);
 		coordinate.setLongitude(longitude);
 		coordinate.setPlanet(planet);
+		
+		logger.info("Se crean las coordenadas para el planeta " + planet.getId() + "para el dia" + date);
 
 		return save(coordinate);
 	}
@@ -161,6 +173,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 		
 		double[] coordinate = {XP, YP};    
 
+		logger.info("Se rota el planeta " + planetDto.getId() + " hacia la derecha");
+
 	    return coordinate;
 	}
 	
@@ -175,6 +189,8 @@ public class CoordinateServiceImpl implements CoordinateService {
 		double YP = X * Math.sin(displacement) + Y * Math.cos(displacement);
 				
 		double[] coordinate = {XP, YP};    
+
+		logger.info("Se rota el planeta " + planetDto.getId() + " hacia la izquierda");
 
 	    return coordinate;
 	}

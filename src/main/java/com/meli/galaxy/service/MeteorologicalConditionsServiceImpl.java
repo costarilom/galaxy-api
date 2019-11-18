@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.meli.galaxy.config.Constantconfig;
@@ -16,6 +18,9 @@ import com.meli.galaxy.repository.MeteorologicalConditionsRepository;
 @Service
 public class MeteorologicalConditionsServiceImpl implements MeteorologicalConditionsService {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	
 	@Resource
 	MeteorologicalConditionsRepository meteorologicalConditionsRepository;
 	
@@ -34,6 +39,8 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 		meteorologicalConditions.setYear(utilService.getYearByDate(date));
 		meteorologicalConditions.setWeather(weather);
 		
+		logger.info("Se guardan las condiciones meteorologicas para le dia " + date);
+
 		return save(meteorologicalConditions);
 	}
 
@@ -57,6 +64,8 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 			meteorologicalConditionsDto.setDay(daystr);
 			meteorologicalConditionsDto.setWeather(meteorologicalConditions.getWeather().getName());
 		}else{
+			logger.info("No se encontró condición climática para el día  " + date);
+
 			new Exception("No se encontró condición climática para el día consultado");
 		}
 		
@@ -73,7 +82,9 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 			meteorologicalConditionsDto.setDays(String.valueOf(meteorologicalConditionsList.size()));
 			meteorologicalConditionsDto.setWeather(meteorologicalConditionsList.get(0).getWeather().getName());
 		}else{
-			new Exception("No se encontró condición climática para el día consultado");
+			logger.info("No se encontró condición climática para el clima consultado");
+
+			new Exception("No se encontró condición climática para el clima consultado");
 		}
 		
 		return meteorologicalConditionsDto;
