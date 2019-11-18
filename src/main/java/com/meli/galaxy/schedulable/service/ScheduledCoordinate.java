@@ -21,7 +21,7 @@ public class ScheduledCoordinate {
 	//Realiza la generacion de coordenadas para los proximos 10 años
 	public void coordinates() {
 		logger.info("Inicia la generacion de coordenadas para los planes Ferengi, Betasoide y Vulcano");
-		coordinateService.generateCoordinatesAll();
+		coordinateService.generateCoordinatesAll(); 
 	}
 	
 }
