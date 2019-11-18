@@ -37,9 +37,9 @@ public class MeteorologicalConditionsDto {
 	
 	public MeteorologicalConditionsDto(){}
 	
-	public MeteorologicalConditionsDto(String weather, String days){
+	public MeteorologicalConditionsDto(String weather, long days){
 		this.weather = weather;
-		this.days = days;
+		this.days = String.valueOf(days);
 	}
 	
 }

@@ -15,31 +15,31 @@ import com.meli.galaxy.entity.MeteorologicalConditions;
 public interface MeteorologicalConditionsRepository extends JpaRepository<MeteorologicalConditions, Integer>{
 
 	
-	@Query("SELECT new com.meli.galaxy.dto.MeteorologicalConditionsDto(w.name, COUNT(mc.id))"
-			+ "FROM MeteorologicalConditions mc"
+	@Query("SELECT new com.meli.galaxy.dto.MeteorologicalConditionsDto(w.name, COUNT(mc.id)) "
+			+ "FROM MeteorologicalConditions mc "
 			+ "INNER JOIN mc.weather w "
-			+ "GROUP BY w.name"
+			+ "GROUP BY w.name "
 			+ "ORDER BY w.name")
 	List<MeteorologicalConditionsDto> findPeriods();
 	
 	@Query("SELECT mc "
-			+ "FROM MeteorologicalConditions mc"
+			+ "FROM MeteorologicalConditions mc "
 			+ "INNER JOIN mc.weather w "
 			+ "WHERE mc.date BETWEEN :dateFrom AND :dateTo")
 	MeteorologicalConditions findWeatherByDay(@Param("dateFrom") Date dateFrom, @Param("dateTo") Date dateTo);
 	
 	
-	@Query("SELECT new com.meli.galaxy.dto.MeteorologicalConditionsDto(w.name, COUNT(mc.id))"
-			+ "FROM MeteorologicalConditions mc"
+	@Query("SELECT new com.meli.galaxy.dto.MeteorologicalConditionsDto(w.name, COUNT(mc.id)) "
+			+ "FROM MeteorologicalConditions mc "
 			+ "INNER JOIN mc.weather w "
 			+ "WHERE mc.year = :year "
-			+ "GROUP BY w.name"
+			+ "GROUP BY w.name "
 			+ "ORDER BY w.name")
 	List<MeteorologicalConditionsDto> findPeriodsByYear(@Param("year") Integer year);
 	
-	@Query("SELECT DISTINCT mc"
-			+ "FROM MeteorologicalConditions mc"
+	@Query("SELECT DISTINCT mc " 
+			+ "FROM MeteorologicalConditions mc "
 			+ "INNER JOIN mc.weather w "
 			+ "WHERE w.code = :code ")
-	List<MeteorologicalConditionsDto> findPeriodsByCode(@Param("code") String code);
+	List<MeteorologicalConditions> findPeriodsByCode(@Param("code") String code);
 }

@@ -67,11 +67,11 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 	public MeteorologicalConditionsDto getPeriodsByCode(String code) {
 		MeteorologicalConditionsDto meteorologicalConditionsDto = new MeteorologicalConditionsDto();
 
-		List<MeteorologicalConditionsDto> meteorologicalConditionsList= meteorologicalConditionsRepository.findPeriodsByCode(code);
+		List<MeteorologicalConditions> meteorologicalConditionsList= meteorologicalConditionsRepository.findPeriodsByCode(code);
 		
 		if(meteorologicalConditionsList != null && !meteorologicalConditionsList.isEmpty()){
 			meteorologicalConditionsDto.setDays(String.valueOf(meteorologicalConditionsList.size()));
-			meteorologicalConditionsDto.setWeather(meteorologicalConditionsList.get(0).getWeather());
+			meteorologicalConditionsDto.setWeather(meteorologicalConditionsList.get(0).getWeather().getName());
 		}else{
 			new Exception("No se encontró condición climática para el día consultado");
 		}
