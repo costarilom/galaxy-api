@@ -173,7 +173,7 @@ public class PlanetServiceImp implements PlanetService {
 			
 			Planet planetB = new Planet();
 			planetB.setCode("BET");
-			planetA.setName("BETASOIDE");
+			planetB.setName("BETASOIDE");
 			planetB.setInitialLatitude("2000");
 			planetB.setInitialLongitude("0");
 			planetB.setDisplacement(3);
@@ -183,7 +183,7 @@ public class PlanetServiceImp implements PlanetService {
 			
 			Planet planetC = new Planet();
 			planetC.setCode("VUL");
-			planetA.setName("VULCANO");
+			planetC.setName("VULCANO");
 			planetC.setInitialLatitude("1000");
 			planetC.setInitialLongitude("0");
 			planetC.setDisplacement(5);
