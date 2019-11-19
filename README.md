@@ -1,4 +1,4 @@
-Sistema para la prediccion del clima en una galaxia
+Sistema para la predicción del clima en una galaxia
 
 	Repositorio del código fuente:	https://github.com/costarilom/galaxy-api.git
 
@@ -20,6 +20,5 @@ Sistema para la prediccion del clima en una galaxia
 				-	INT =  Pico de intensidad
 				-	OPT = Condiciones optimas
 
-	
 		* https://tiempo-api.herokuapp.com/galaxy/clean
 			Limpia la migracion realizada (La misma se ejecuta nuevamene a los 5 segundos)

@@ -26,4 +26,6 @@ public interface MeteorologicalConditionsService {
 	Map<String, String> clean();
 	
 	Map<String, String> initialize();
+	
+	Map<String, String> planetAndWeatherClean();
 }

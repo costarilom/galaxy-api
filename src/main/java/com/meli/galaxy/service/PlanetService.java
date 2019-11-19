@@ -22,4 +22,6 @@ public interface PlanetService {
 	boolean sunInsideTheTriangle(Coordinate planetA, Coordinate planetB, Coordinate planetC);
 	
 	void initialize();
+	
+	void clean();
 }

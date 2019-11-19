@@ -191,4 +191,9 @@ public class PlanetServiceImp implements PlanetService {
 			planetRepository.save(planetC);
 			logger.info("Se guardo planeta C");
 	}
+
+	@Override
+	public void clean() {
+		planetRepository.clean();
+	}
 }

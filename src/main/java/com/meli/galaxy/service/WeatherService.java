@@ -10,5 +10,7 @@ public interface WeatherService {
 	void saveWeatherByDate(Date date);
 	
 	void initialize();
+	
+	void clean();
 
 }

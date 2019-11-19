@@ -129,4 +129,17 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 		response.put("response", "La operacion se realizo con exito");
 		return response;
 	}
+	
+	@Override
+	@Transactional
+	public Map<String, String> planetAndWeatherClean(){
+		Map<String, String> response = new HashMap<String, String>();
+		logger.info("Se procede a limpiar la tabla migrate");
+		planetService.clean();
+		logger.info("Se procede a limpiar la tabla coordinate");
+		weatherService.clean();
+		
+		response.put("response", "La operacion se realizo con exito");
+		return response;
+	}
 }

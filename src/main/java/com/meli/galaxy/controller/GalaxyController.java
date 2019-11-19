@@ -52,4 +52,10 @@ public class GalaxyController {
 	public Map<String, String> initialize(HttpServletRequest request) throws IOException {
 		return meteorologicalConditionsService.initialize();
 	}
+	
+	
+	@RequestMapping(value = "planet/and/weather/clean", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public Map<String, String> planetAnWeatherclean(HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.planetAndWeatherClean();
+	}
 }

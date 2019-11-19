@@ -115,4 +115,9 @@ public class WeatherServiceImpl implements WeatherService {
 		weatherRepository.save(weather4);
 		logger.info("Se guardo clima 4");
 	}
+	
+	@Override
+	public void clean() {
+		weatherRepository.clean();
+	}
 }
