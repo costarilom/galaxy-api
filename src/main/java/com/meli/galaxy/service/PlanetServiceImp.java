@@ -164,7 +164,7 @@ public class PlanetServiceImp implements PlanetService {
 			Planet planetA = new Planet();
 			planetA.setCode("FER");
 			planetA.setName("FERENGI");
-			planetA.setInitialLongitude("500");
+			planetA.setInitialLatitude("500");
 			planetA.setInitialLongitude("0");
 			planetA.setDisplacement(1);
 			planetA.setDirectionOfRotation("RIG");
@@ -174,7 +174,7 @@ public class PlanetServiceImp implements PlanetService {
 			Planet planetB = new Planet();
 			planetB.setCode("BET");
 			planetA.setName("BETASOIDE");
-			planetB.setInitialLongitude("2000");
+			planetB.setInitialLatitude("2000");
 			planetB.setInitialLongitude("0");
 			planetB.setDisplacement(3);
 			planetB.setDirectionOfRotation("RIG");
@@ -184,7 +184,7 @@ public class PlanetServiceImp implements PlanetService {
 			Planet planetC = new Planet();
 			planetC.setCode("VUL");
 			planetA.setName("VULCANO");
-			planetC.setInitialLongitude("1000");
+			planetC.setInitialLatitude("1000");
 			planetC.setInitialLongitude("0");
 			planetC.setDisplacement(5);
 			planetC.setDirectionOfRotation("LEF");
