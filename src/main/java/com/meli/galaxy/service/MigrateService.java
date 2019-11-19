@@ -8,4 +8,6 @@ public interface MigrateService {
 	Migrate getMigrateByType(@Param("type") String type);
 	
 	Migrate save(Migrate migrate);
+	
+	void clean();
 }

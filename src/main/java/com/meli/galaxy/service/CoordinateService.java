@@ -14,4 +14,6 @@ public interface CoordinateService {
 	List<Coordinate> getCoordinateByPlanetId(Integer planetId);
 	
 	List<Coordinate> getCoordinatesByDate(Date date);
+	
+	void clean();
 }

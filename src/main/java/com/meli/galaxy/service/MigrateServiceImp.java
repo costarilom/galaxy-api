@@ -20,4 +20,9 @@ public class MigrateServiceImp implements MigrateService {
 	public Migrate save(Migrate migrate) {
 		return migrateRepository.save(migrate);
 	}
+
+	@Override
+	public void clean() {
+		migrateRepository.clean();
+	}
 }

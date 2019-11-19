@@ -1,5 +1,6 @@
 package com.meli.galaxy.repository;
 
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,4 +12,8 @@ public interface MigrateRepository extends JpaRepository<Migrate, Integer>{
 
 	@Query("SELECT m FROM Migrate m WHERE m.type = :type")
 	Migrate findMigrateByType(@Param("type") String type);
+	
+	@Modifying
+	@Query("DELETE FROM Migrate")
+	void clean();
 }

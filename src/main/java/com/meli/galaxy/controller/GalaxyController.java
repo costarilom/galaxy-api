@@ -2,6 +2,7 @@ package com.meli.galaxy.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -40,5 +41,10 @@ public class GalaxyController {
 	@RequestMapping(value = "/periods/code/{code}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
 	public MeteorologicalConditionsDto getPeriodsByCode(@PathVariable String code, HttpServletRequest request) throws IOException {
 		return meteorologicalConditionsService.getPeriodsByCode(code);
+	}
+	
+	@RequestMapping(value = "/clean", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public Map<String, String> clean(HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.clean();
 	}
 }

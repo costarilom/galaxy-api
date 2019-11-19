@@ -199,4 +199,9 @@ public class CoordinateServiceImpl implements CoordinateService {
 	public List<Coordinate> getCoordinatesByDate(Date date) {
 		return coordinateRepository.findCoordinatesByDate(utilService.getDateFrom(date), utilService.getDateTo(date));
 	}
+
+	@Override
+	public void clean() {
+		coordinateRepository.clean();
+	}
 }

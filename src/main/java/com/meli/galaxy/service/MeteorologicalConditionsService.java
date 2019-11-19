@@ -3,6 +3,7 @@ package com.meli.galaxy.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.meli.galaxy.dto.MeteorologicalConditionsDto;
 import com.meli.galaxy.entity.MeteorologicalConditions;
@@ -21,4 +22,6 @@ public interface MeteorologicalConditionsService {
 	List<MeteorologicalConditionsDto> getPeriodsByYear(String year);
 	
 	MeteorologicalConditionsDto getWeatherByDay(String day);
+	
+	Map<String, String> clean();
 }

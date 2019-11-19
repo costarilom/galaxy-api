@@ -1,9 +1,12 @@
 package com.meli.galaxy.service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +29,12 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 	
 	@Resource
 	UtilService utilService;
+	
+	@Resource
+	MigrateService migrateService;
+	
+	@Resource
+	CoordinateService coordinateService;
 	
 	@Override
 	public MeteorologicalConditions save(MeteorologicalConditions meteorologicalConditions) {
@@ -90,5 +99,17 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 		return meteorologicalConditionsDto;
 	}
 
+	@Override
+	@Transactional
+	public Map<String, String> clean(){
+		Map<String, String> response = new HashMap<String, String>();
+		logger.info("Se procede a limpiar la tabla migrate");
+		migrateService.clean();
+		logger.info("Se procede a limpiar la tabla coordinate");
+		coordinateService.clean();
+		
+		response.put("response", "La operacion se realizo con exito");
+		return response;
+	}
 
 }
