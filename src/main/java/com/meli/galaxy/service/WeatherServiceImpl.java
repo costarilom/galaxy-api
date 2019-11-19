@@ -88,4 +88,31 @@ public class WeatherServiceImpl implements WeatherService {
 	public Weather getWeatherByCode(String code) {
 		return weatherRepository.findWeatherByCode(code);
 	}
+
+	@Override
+	public void initialize() {
+		Weather weather1 = new Weather();
+		weather1.setCode("DRO");
+		weather1.setName("Sequía");
+		weatherRepository.save(weather1);
+		logger.info("Se guardo clima 1");
+		
+		Weather weather2 = new Weather();
+		weather2.setCode("RAI");
+		weather2.setName("Lluvia");
+		weatherRepository.save(weather2);
+		logger.info("Se guardo clima 2");
+		
+		Weather weather3 = new Weather();
+		weather3.setCode("INT");
+		weather3.setName("Pico de intensidad");
+		weatherRepository.save(weather3);
+		logger.info("Se guardo clima 3");
+		
+		Weather weather4 = new Weather();
+		weather4.setCode("OPT");
+		weather4.setName("Condiciones optimas de presión y temperatura");
+		weatherRepository.save(weather4);
+		logger.info("Se guardo clima 4");
+	}
 }

@@ -24,4 +24,6 @@ public interface MeteorologicalConditionsService {
 	MeteorologicalConditionsDto getWeatherByDay(String day);
 	
 	Map<String, String> clean();
+	
+	Map<String, String> initialize();
 }

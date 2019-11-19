@@ -204,4 +204,5 @@ public class CoordinateServiceImpl implements CoordinateService {
 	public void clean() {
 		coordinateRepository.clean();
 	}
+
 }

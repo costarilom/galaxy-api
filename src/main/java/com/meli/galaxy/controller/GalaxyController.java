@@ -47,4 +47,9 @@ public class GalaxyController {
 	public Map<String, String> clean(HttpServletRequest request) throws IOException {
 		return meteorologicalConditionsService.clean();
 	}
+	
+	@RequestMapping(value = "/initialize", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public Map<String, String> initialize(HttpServletRequest request) throws IOException {
+		return meteorologicalConditionsService.initialize();
+	}
 }

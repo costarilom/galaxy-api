@@ -158,4 +158,37 @@ public class PlanetServiceImp implements PlanetService {
 		}
 		return result;
 	}
+
+	@Override
+	public void initialize() {
+			Planet planetA = new Planet();
+			planetA.setCode("FER");
+			planetA.setName("FERENGI");
+			planetA.setInitialLongitude("500");
+			planetA.setInitialLongitude("0");
+			planetA.setDisplacement(1);
+			planetA.setDirectionOfRotation("RIG");
+			planetRepository.save(planetA);
+			logger.info("Se guardo planeta A");
+			
+			Planet planetB = new Planet();
+			planetB.setCode("BET");
+			planetA.setName("BETASOIDE");
+			planetB.setInitialLongitude("2000");
+			planetB.setInitialLongitude("0");
+			planetB.setDisplacement(3);
+			planetB.setDirectionOfRotation("RIG");
+			planetRepository.save(planetB);
+			logger.info("Se guardo planeta B");
+			
+			Planet planetC = new Planet();
+			planetC.setCode("VUL");
+			planetA.setName("VULCANO");
+			planetC.setInitialLongitude("1000");
+			planetC.setInitialLongitude("0");
+			planetC.setDisplacement(5);
+			planetC.setDirectionOfRotation("LEF");
+			planetRepository.save(planetC);
+			logger.info("Se guardo planeta C");
+	}
 }

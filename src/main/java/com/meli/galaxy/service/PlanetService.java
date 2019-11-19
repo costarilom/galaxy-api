@@ -20,4 +20,6 @@ public interface PlanetService {
 	boolean maximumPerimeter(Coordinate planetA, Coordinate planetB, Coordinate planetC);
 	
 	boolean sunInsideTheTriangle(Coordinate planetA, Coordinate planetB, Coordinate planetC);
+	
+	void initialize();
 }

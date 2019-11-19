@@ -36,6 +36,12 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 	@Resource
 	CoordinateService coordinateService;
 	
+	@Resource
+	PlanetService planetService;
+	
+	@Resource
+	WeatherService weatherService;
+	
 	@Override
 	public MeteorologicalConditions save(MeteorologicalConditions meteorologicalConditions) {
 		return meteorologicalConditionsRepository.save(meteorologicalConditions);
@@ -112,4 +118,15 @@ public class MeteorologicalConditionsServiceImpl implements MeteorologicalCondit
 		return response;
 	}
 
+	@Override
+	@Transactional
+	public Map<String, String> initialize(){
+		Map<String, String> response = new HashMap<String, String>();
+		logger.info("Se inicializan las tablas planet y weather");
+		planetService.initialize();
+		weatherService.initialize();
+		
+		response.put("response", "La operacion se realizo con exito");
+		return response;
+	}
 }
