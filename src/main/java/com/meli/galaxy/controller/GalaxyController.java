@@ -54,7 +54,7 @@ public class GalaxyController {
 	}
 	
 	
-	@RequestMapping(value = "planet/and/weather/clean", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/planet/and/weather/clean", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE })
 	public Map<String, String> planetAnWeatherclean(HttpServletRequest request) throws IOException {
 		return meteorologicalConditionsService.planetAndWeatherClean();
 	}
